@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="credentials">
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="email" placeHolder="Email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="password" placeHolder="Password(por ahora se ve)" formControlName="password"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="text" placeholder="Nombre de Usuario" formControlName="username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="number" placeholder="Edad" formControlName="age"></ion-input>
+    </ion-item>
+
+    
+    <ion-button type="button" (click)="register()">Registarse</ion-button>
+  </form>
+
+
+  <ion-button (click)="goToHome();"> IR AL HOME</ion-button>
+</ion-content>
