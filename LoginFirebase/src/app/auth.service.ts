@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, user } from '@angular/fire/auth';
 import { DocumentReference, Firestore, addDoc, collection, collectionData, deleteDoc, doc, docSnapshots, getDoc, getDocs } from '@angular/fire/firestore';
-
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   constructor(
+    private router: Router,
     private auth : Auth,
     private firestore :Firestore,
   ) { }
@@ -54,11 +55,15 @@ export class AuthService {
 
   agregarUsuario (usuario:any, path:string) {
     const notesRef = collection(this.firestore, path);
+
     return addDoc(notesRef,usuario);
+
   }
 
   logout () {
-    return signOut(this.auth);
+
+    return signOut(this.auth),
+    this.router.navigateByUrl('login');
   }
 
 

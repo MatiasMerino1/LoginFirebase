@@ -49,37 +49,8 @@ export class RegistroPage implements OnInit {
     })
   }
 
-
   async register () {
     console.log(this.credentials.value);
-
-    const user = await this.authService.register(this.credentials.value);
-    if (user) {
-      console.log("OK");
-      this.router.navigateByUrl("/login");
-    } else {
-      console.log("NOT OK")
-    }
-  }
-
-  async login () {
-    console.log(this.credentials.value);
-
-    const user = await this.authService.login(this.credentials.value);
-
-    if (user) {
-      console.log("OK");
-      this.router.navigateByUrl('home');
-    } else {
-      console.log("NOT OK")
-    }
-  }
-
-  goToHome (){
-    this.router.navigateByUrl('home');
-  }
-
-  addUsuario() {
     const path = 'usuarios'
     try {
       this.authService.agregarUsuario(
@@ -89,7 +60,13 @@ export class RegistroPage implements OnInit {
     } catch(e){
       console.log("Error");
       console.log(e);
+    };
+    const user = await this.authService.register(this.credentials.value);
+    if (user) {
+      console.log("OK");
+      this.router.navigateByUrl("/login");
+    } else {
+      console.log("NOT OK")
     }
   }
-
 }

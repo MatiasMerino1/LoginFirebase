@@ -23,7 +23,7 @@ export class HomePage {
   }
   logout () {
     this.authservice.logout();
-    this.router.navigateByUrl('registro')
+    this.router.navigateByUrl('login')
   }
 }
 
