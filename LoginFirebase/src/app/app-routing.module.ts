@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule),
+    loadChildren: () => import('./registro/registro.module').then(m => m.RegistroPageModule),
     ...canActivate(redirectLoggedInToHome)
   },
   {
