@@ -50,6 +50,16 @@ export class RegistroPage implements OnInit {
   }
 
   async register () {
+
+    const user = await this.authService.register(this.credentials.value);
+    if (user) {
+      console.log("OK");
+      this.router.navigateByUrl("/login");
+    } else {
+      console.log("NOT OK")
+    }
+  }
+  addUsuario() {
     console.log(this.credentials.value);
     const path = 'usuarios'
     try {
@@ -61,12 +71,5 @@ export class RegistroPage implements OnInit {
       console.log("Error");
       console.log(e);
     };
-    const user = await this.authService.register(this.credentials.value);
-    if (user) {
-      console.log("OK");
-      this.router.navigateByUrl("/login");
-    } else {
-      console.log("NOT OK")
-    }
   }
 }
