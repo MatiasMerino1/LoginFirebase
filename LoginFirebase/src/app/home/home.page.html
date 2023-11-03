@@ -1,25 +1,29 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
+  <ion-toolbar color="dark">
+    <ion-title class="ion-text-center">
       Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content color="medium" [fullscreen]="true">
   <ion-card>
-    <ion-card-title>
-      Quieres agregar un item?
-    </ion-card-title>
-    <ion-card-content>
-      <ion-button (click)="goToAgregarItem();">Ir al formulario para agregar el Item</ion-button>
+    <ion-card-header color="dark">
+      <ion-card-title>¿Quieres agregar un item?</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>    
+      <ion-button color="success" (click)="goToAgregarItem();">Ir al formulario</ion-button>
     </ion-card-content>
   </ion-card>
 
   <ion-card>
+    <ion-card-header color="dark">
+      <ion-card-title>¿Quieres iniciar sesión con otra cuenta? Clickea aquí!!!</ion-card-title>
+    </ion-card-header>
+
     <ion-card-content>
-    <ion-card-title>Quieres iniciar sesión con otra cuenta? Clickea aquí!!!</ion-card-title>
-    <ion-button type="button" (click)="logout();">logout</ion-button>
+      <ion-button type="button" color="danger" (click)="logout();">logout</ion-button>
     </ion-card-content>
   </ion-card>
 
