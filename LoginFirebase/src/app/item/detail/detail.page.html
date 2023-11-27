@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Nombre Item: {{items.nombre}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-label>Descripcion: {{items.descripcion}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Precio: {{items.precio}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="goItems();">Ir a la lista de los Items</ion-button>
+  <ion-button (click)="goHome();">Home</ion-button>
+  <ion-button (click)="goUpdate();">Actualizar información</ion-button>
+  <ion-content>
+    <ion-button
+    (click) = "deleteItem();"
+    color="danger">
+      <ion-icon name="trash-bin-outline">Borrar Item</ion-icon>
+    </ion-button>
+  </ion-content>
+
+
+
+</ion-content>

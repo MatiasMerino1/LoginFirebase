@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Auth,signOut } from '@angular/fire/auth';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -11,19 +10,25 @@ import { AuthService } from '../auth.service';
 export class HomePage {
   constructor
   (
-
     private router:Router,
     private authservice: AuthService
   ) {}
 
-
   goToAgregarItem() {
-   this.router.navigateByUrl('agregar-item');
+   this.router.navigateByUrl('item/agregar-item');
    console.log("funciono")
   }
+
   logout () {
     this.authservice.logout();
-    this.router.navigateByUrl('login')
+  }
+
+  goUsuario() {
+    this.router.navigateByUrl('perfil-usuario')
+  }
+
+  goItems() {
+    this.router.navigateByUrl('item')
   }
 }
 

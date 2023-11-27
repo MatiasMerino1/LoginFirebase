@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+  <ion-list>
+    <ion-item *ngFor = "let item of items" (click) = goTo(item.id)>
+      <ion-label>{{item.nombre}}</ion-label>
+    </ion-item>
+  </ion-list>
+    <ion-card-content>
+      <ion-item *ngFor = "let item of items" >
+        <ion-label>{{item.descripcion}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button (click)="goHome();">Home</ion-button>
+</ion-content>

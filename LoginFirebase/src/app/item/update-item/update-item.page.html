@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Actualizar informacion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-label>Informe de actualizacion de informacion del producto </ion-label>
+  <form [formGroup]="updateForm">
+    <ion-input type="text" placeHolder="Nombre" formControlName="nombre"></ion-input>
+    <ion-input type="text" placeHolder="Descripcion" formControlName="descripcion"></ion-input>
+    <ion-input type="text" placeHolder="Precio" formControlName="precio"></ion-input>
+  </form>
+  <ion-button (click)="updateItem();"> Actualizar Información </ion-button>
+  <ion-button (click)="goHome();">Home</ion-button>
+</ion-content>

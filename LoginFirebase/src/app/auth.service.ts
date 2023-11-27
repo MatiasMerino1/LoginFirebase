@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, user } from '@angular/fire/auth';
-import { DocumentReference, Firestore, addDoc, collection, collectionData, deleteDoc, doc, docSnapshots, getDoc, getDocs } from '@angular/fire/firestore';
+import { DocumentReference, Firestore, addDoc, collection, collectionData, deleteDoc, doc, docSnapshots, getDoc, getDocs, updateDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
@@ -13,8 +13,7 @@ export class AuthService {
     private firestore :Firestore,
   ) { }
 
-  async register ({email,password,username, age, cellphone}:any) {
-
+  async register ({email,password}:any) {
 
     try {
       console.log("Intentando crear usuario",email);
@@ -61,10 +60,17 @@ export class AuthService {
   }
 
   logout () {
-
     return signOut(this.auth),
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('registro');
   }
 
+  updateDocument (updateData:any,path:string, id:string) {
+    const docRef = doc(this.firestore, path, id);
+    return updateDoc(docRef, updateData);
+  }
 
+  deleteDocument (path:string, id:string) {
+    const docRef = doc(this.firestore, path, id);
+    return deleteDoc(docRef);
+}
 }

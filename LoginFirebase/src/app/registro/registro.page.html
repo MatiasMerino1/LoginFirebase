@@ -1,35 +1,30 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="dark">
-    <ion-title class="ion-text-center">Formulario de Registro</ion-title>
+  <ion-toolbar>
+    <ion-title>Formulario de Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="medium" [fullscreen]="true">
+<ion-content [fullscreen]="true">
   <br>
 
-  <form [formGroup]="credentials">
-    <ion-item color="medium" class="ion-margin-bottom">
-      <ion-input  type="email" placeHolder="Email" formControlName="email"></ion-input>
+  <form [formGroup]="this.credentials">
+    <ion-item class="ion-margin-bottom">
+      <ion-input type="email" placeHolder="Email" formControlName="email"></ion-input>
     </ion-item>
 
-    <ion-item color="medium" class="ion-margin-bottom">
+    <ion-item class="ion-margin-bottom">
       <ion-input type="text" placeHolder="Contraseña" formControlName="password"></ion-input>
     </ion-item>
 
-    <ion-item color="medium" class="ion-margin-bottom">
+    <ion-item class="ion-margin-bottom">
       <ion-input type="text" placeholder="Nombre de Usuario" formControlName="username"></ion-input>
     </ion-item>
 
-    <ion-item color="medium" class="ion-margin-bottom">
-      <ion-input type="number" placeholder="Edad" formControlName="age"></ion-input>
-    </ion-item>
-
-    <ion-item color="medium" class="ion-margin-bottom">
+    <ion-item class="ion-margin-bottom">
       <ion-input type="text" placeholder="Telefono" formControlName="cellphone"></ion-input>
     </ion-item>
 
-    <ion-button type="button" (click) ="register();">Ir Al login</ion-button>
-    <ion-button color="success" type="button" (click)="addUsuario();">Registarse</ion-button>
+    <ion-button type="button" (click)="registrarUsuario()">Registarse</ion-button>
   </form>
 
 </ion-content>

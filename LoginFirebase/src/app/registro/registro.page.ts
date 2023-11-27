@@ -15,7 +15,6 @@ export class RegistroPage implements OnInit {
   constructor(
     private authService : AuthService,
     private router : Router,
-    private formBuilder : FormBuilder,
 
   ) { }
 
@@ -32,44 +31,34 @@ export class RegistroPage implements OnInit {
     return this.credentials.get('username')
   }
 
-  get age() {
-    return this.credentials.get('age')
-  }
-
   get cellphone() {
     return this.credentials.get('cellphone')
   }
   ngOnInit() {
-    this.credentials = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['',[Validators.required, Validators.minLength(6)]],
-      username: ['', [Validators.required]],
-      age: ['',[Validators.required, Validators.min(19), ]],
-      cellphone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(11)]],
+    this.credentials = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('',[Validators.required, Validators.minLength(6)]),
+      username: new FormControl('', [Validators.required]),
+      cellphone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(11)]),
     })
   }
 
-  async register () {
-
-    const user = await this.authService.register(this.credentials.value);
-    if (user) {
-      console.log("OK");
-      this.router.navigateByUrl("/login");
-    } else {
-      console.log("NOT OK")
-    }
-  }
-  addUsuario() {
-    console.log(this.credentials.value);
-    const path = 'usuarios'
+  async registrarUsuario() {
     try {
-      this.authService.agregarUsuario(
-        this.credentials.value,
-        path
-      )
-    } catch(e){
-      console.log("Error");
-      console.log(e);
-    };
-  }
+        const user = await this.authService.register(this.credentials.value);
+        if (user) {
+            console.log("Usuario registrado exitosamente");
+            await this.authService.agregarUsuario(
+                this.credentials.value,
+                "usuarios"
+            );
+            this.router.navigateByUrl("/home");
+            console.log("Funciono")
+        } else {
+            console.log("Error al registrar el usuario");
+        }
+    } catch (e) {
+        console.error("Error durante el registro del usuario:", e);
+    }
+}
 }
