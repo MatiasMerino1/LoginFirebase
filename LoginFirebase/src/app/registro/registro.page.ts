@@ -61,4 +61,9 @@ export class RegistroPage implements OnInit {
         console.error("Error durante el registro del usuario:", e);
     }
 }
+
+goLogin()
+{
+  this.router.navigateByUrl('login')
+}
 }

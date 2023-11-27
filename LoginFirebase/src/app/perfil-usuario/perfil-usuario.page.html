@@ -20,6 +20,17 @@
     </ion-item>
   </ion-list>
 
-  <ion-button (click)="goUpdateUsuario();">Actualizar Información</ion-button>
+<br>
+
+  <ion-content >
+    <form [formGroup]="updateForm">
+      <ion-input type="text" placeHolder="Email" formControlName="email"></ion-input>
+      <ion-input type="text" placeHolder="Password" formControlName="password"></ion-input>
+      <ion-input type="text" placeHolder="Username" formControlName="username"></ion-input>
+      <ion-input type="text" placeHolder="Numero de Telefono" formControlName="cellphone"></ion-input>
+    </form>
+  </ion-content>
+
+  <ion-button (click)="updateUsuario();">Actualizar Información</ion-button>
   <ion-button (click)="goHome();">Ir al Home</ion-button>
 </ion-content>

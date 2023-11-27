@@ -18,7 +18,6 @@ export class PerfilUsuarioPage implements OnInit {
   constructor(
     private router : Router,
     private perfilservice : PerfilService,
-    private formBuilder : FormBuilder,
   ) { }
 
   get email () {return this.credentials.get('email');}
@@ -32,8 +31,10 @@ export class PerfilUsuarioPage implements OnInit {
       console.log(this.credentials);
     });
   }
-  goUpdateUsuario(){
-    this.router.navigateByUrl('update-usuario')
+
+  updateUsuario () {
+    this.perfilservice.updateUsuario(this.credentials.id, this.updateForm.value);
+    this.router.navigateByUrl('home')
   }
 
   goHome() {

@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DetailPage implements OnInit {
 
   items !: any;
+  updateForm!: any;
 
 
   constructor(private itemService : ItemService,
@@ -26,7 +27,12 @@ export class DetailPage implements OnInit {
       this.activatedRoute.paramMap.subscribe(paramMap => {
         const itemId = paramMap.get('itemId');
         this.items = this.itemService.getItem(itemId as string);
-      })
+      }),
+      this.updateForm = this.formBuilder.group({
+        nombre:['',[Validators.required,Validators.minLength(3)]],
+        descripcion:['',[Validators.required,Validators.maxLength(100)]],
+        precio:['',[Validators.required,Validators.maxLength(100)]]
+      });
     }
     goItems(){
       this.router.navigateByUrl('item')
@@ -40,6 +46,11 @@ export class DetailPage implements OnInit {
       this.router.navigateByUrl('home')
     }
 
+    updateItem () {
+      this.itemService.updateItem(this.items.id, this.updateForm.value);
+      this.router.navigateByUrl('home')
+    }
+    
     goUpdate(){
       this.router.navigateByUrl('item/update-item')
     }
