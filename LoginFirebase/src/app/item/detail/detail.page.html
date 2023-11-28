@@ -1,5 +1,5 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header [translucent]="true" >
+  <ion-toolbar color="warning">
     <ion-title>Nombre Item: {{items.nombre}}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -7,13 +7,13 @@
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item>
-      <ion-label>Descripcion: {{items.descripcion}}</ion-label>
+      <ion-label style="padding-left: 10px;">Descripcion: {{items.descripcion}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Precio: {{items.precio}}</ion-label>
+      <ion-label style="padding-left: 10px;">Precio: {{items.precio}}</ion-label>
     </ion-item>
   </ion-list>
-  <ion-button (click)="goItems();">Volver a la lista de los Items</ion-button>
+  <ion-button style="padding-left: 10px;" color="warning" (click)="goItems();">Volver a la lista de los Items</ion-button>
 <br>
 <br> 
 <ion-content>
@@ -21,14 +21,21 @@
     <ion-card-content>
     <ion-label>Informe de actualizacion de informacion del producto </ion-label>
     <form [formGroup]="updateForm"> 
+      <div>
       <ion-input type="text" placeHolder="Nombre" formControlName="nombre"></ion-input>
+    </div>
+    <div>
       <ion-input type="text" placeHolder="Descripcion" formControlName="descripcion"></ion-input>
+    </div>
+    <div>
       <ion-input type="text" placeHolder="Precio" formControlName="precio"></ion-input>
+    </div>
     </form>
-    <ion-button (click)="updateItem();"> Actualizar Información </ion-button>
-    <ion-button (click)="goHome();">Home</ion-button>
+    <ion-button color="warning" (click)="updateItem();"> Actualizar Información </ion-button>
+    <ion-button color="warning" (click)="goHome();">Home</ion-button>
   </ion-card-content>
 </ion-card>
+<ion-button  (click) = "deleteItem();"color="medium"><ion-icon name="trash-bin-outline" style="padding-right: 5px;"></ion-icon>Borrar item</ion-button>
 </ion-content>
 
-<ion-button (click) = "deleteItem();"color="danger"><ion-icon name="trash-bin-outline">Borrar Item</ion-icon></ion-button>
+

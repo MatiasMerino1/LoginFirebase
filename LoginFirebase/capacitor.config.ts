@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'LoginFirebase',
+  appId: 'cl.BodegEeps.app',
+  appName: 'BodegEeps',
   webDir: 'www',
   server: {
     androidScheme: 'https'

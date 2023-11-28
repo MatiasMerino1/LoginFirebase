@@ -1,22 +1,32 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>item</ion-title>
+  <ion-toolbar color="warning">
+    <ion-searchbar  placeholder="Buscar artículo" (ionInput)="filterItems($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-card>
-  <ion-list>
-    <ion-item *ngFor = "let item of items" (click) = goTo(item.id)>
-      <ion-label>{{item.nombre}}</ion-label>
-    </ion-item>
-  </ion-list>
+    <ion-list>
+      <ion-item *ngFor="let item of filteredItems" (click)="goTo(item.id)" class="item" id="Nombre-Item">
+        <ion-label>Nombre del Item: {{item.nombre}}</ion-label>
+      </ion-item>
+    </ion-list>
     <ion-card-content>
-      <ion-item *ngFor = "let item of items" >
+      <ion-item *ngFor="let item of filteredItems">
         <ion-label>{{item.descripcion}}</ion-label>
       </ion-item>
     </ion-card-content>
   </ion-card>
 
-  <ion-button (click)="goHome();">Home</ion-button>
+  <ion-card>
+    <ion-card-content>
+    <ion-card-title>
+      Quieres agregar un item?
+    </ion-card-title>
+
+      <ion-button color="warning" (click)="goToAgregarItem();">Formulario para crear Items</ion-button>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-button color="warning" (click)="goHome();">Home</ion-button>
 </ion-content>

@@ -30,3 +30,43 @@
   position: absolute;
   right: 0;
 }
+#botonLogOut{
+  position: static;
+  left: 0;
+}
+
+ion-header {
+  background-color: #f9cb92; /* orange */
+}
+
+ion-toolbar {
+  background-color: #643a24; /* coffee */
+}
+
+ion-card {
+  color: #94512c; /* coffee */
+}
+
+ion-item {
+  background-color: #643a24; /* coffee */
+  color: #915206; /* orange */
+}
+
+ion-label {
+  color: #5a3911; /* orange */
+}
+
+ion-button {
+  color: #f9cb92; /* orange */
+}
+.body {
+  background-color: #f9cb92;
+}
+
+ion-label {
+  border-radius: 10px;
+}
+
+ion-card-title{
+  color: #5a3911;
+}

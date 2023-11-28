@@ -30,23 +30,20 @@ export class AgregarItemPage implements OnInit {
     })
     }
 
-  AgregarItem() {
-    const path = 'items'
-    try {
-      this.agregarItem.addCosa(
-        this.item.value,
-        path
-      ),console.log('funciono'),
-      console.log(this.item.value)
-    } catch (e){
-      console.log("Error");
-      console.log(e);
+    AgregarItem() {
+      const path = 'items';
+    
+      try {
+        this.agregarItem.addCosa(this.item.value, path);
+        this.router.navigateByUrl('home'); // Redirect to "home" after adding the item
+      } catch (e) {
+        console.log("Error");
+        console.log(e);
+      }
     }
-
-  }
-  goHome() {
-    this.router.navigateByUrl('home')
-  }
-
+    goHome() {
+      this.router.navigateByUrl('home');
+    }
+  
   }
 

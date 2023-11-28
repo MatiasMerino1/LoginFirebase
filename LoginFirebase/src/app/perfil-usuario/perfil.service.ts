@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,47 +8,48 @@ export class PerfilService {
 
   documents !: any[];
   credentials!: any;
-  updateForm: any;
+  updateForm!: FormGroup;
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-  ) { }
-  get email () {return this.credentials.get('email');}
-  get password () {return this.credentials.get('password');}
-  get username () {return this.credentials.get('username');}
-  get cellphone () {return this.credentials.get('cellphone');}
+  ) {this.credentials = [];}
+  
 
-  async getAllUsuarios () {
+  async getAllUsuarios() {
     const path = 'usuarios';
+    this.credentials = []; // Initialize credentials array
+  
     this.documents = (await this.authService.getDocuments(path)).docs;
-
-    for (const element of this.documents){
-      const credentials= (await this.authService.getDocument(path, element.id)).data();
+  
+    for (const element of this.documents) {
+      const credentials = (await this.authService.getDocument(path, element.id)).data();
       this.credentials.push({
-        id:element.id,
+        id: element.id,
         ...credentials,
       });
     }
-    return [...this.credentials];
+    return [...this.credentials]; // Return a copy of the credentials array
   }
-
 
 
   ngOnInit() {
     this.updateForm = this.formBuilder.group({
-      email:['',[Validators.required,Validators.minLength(3)]],
-      password:['',[Validators.required,Validators.maxLength(100)]],
-      username:['',[Validators.required,Validators.maxLength(100)]],
-      cellphone:['',[Validators.required,Validators.maxLength(100)]]
+      email: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.maxLength(100)]],
+      username: ['', [Validators.required, Validators.maxLength(100)]],
+      cellphone: ['', [Validators.required, Validators.maxLength(100)]]
     });
   }
-  async getUsuario (id:string){
-      return {
-        ...this.credentials.find( (credentials: { id: string; }) => {
-          return credentials.id === id;
-        })
-      };
-    }
+  async getUsuario(id: string) {
+    await this.getAllUsuarios();
+    return {
+      ...this.credentials.find((credentials: { id: string; }) => {
+        return credentials.id === id;
+      })
+    };
+  }
+
+  
   updateUsuario (id:string, updateData:any) {
     //console.log("Actualizando, paso 2");
     this.authService.updateDocument(updateData, 'usuarios', id);

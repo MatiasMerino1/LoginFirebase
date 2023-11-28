@@ -1,15 +1,15 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="warning">
     <ion-title>Creacion del Item</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <form [formGroup]="item">
-    <ion-input type="text" placeHolder="Nombre" formControlName="nombre"></ion-input>
-    <ion-input type="text" placeHolder="Descripcion" formControlName="descripcion"></ion-input>
-    <ion-input type="number" placeHolder="Precio del item" formControlName="precio"></ion-input>
+  <form style="padding-left: 10px;" [formGroup]="item">
+    <ion-input style="text-align: center;" type="text" placeHolder="Nombre" formControlName="nombre"></ion-input>
+    <ion-input style="text-align: center;" type="text" placeHolder="Descripcion" formControlName="descripcion"></ion-input>
+    <ion-input style="text-align: center;" type="number" placeHolder="Precio del item" formControlName="precio"></ion-input>
   </form>
-  <ion-button (click)="AgregarItem();"> SUBIR OBJETO </ion-button>
-  <ion-button (click)="goHome();">Ir al Home</ion-button>
+  <ion-button type="button" color="warning" (click)="AgregarItem();"> SUBIR OBJETO </ion-button>
+  <ion-button color="warning" (click)="goHome();">Ir al Home</ion-button>
 </ion-content>

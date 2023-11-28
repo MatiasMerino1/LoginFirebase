@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import {FormGroup,} from '@angular/forms';
+import { Router } from '@angular/router';
 import { PerfilService } from './perfil.service';
 
 @Component({
@@ -19,12 +18,6 @@ export class PerfilUsuarioPage implements OnInit {
     private router : Router,
     private perfilservice : PerfilService,
   ) { }
-
-  get email () {return this.credentials.get('email');}
-  get password () {return this.credentials.get('password');}
-  get username () {return this.credentials.get('username');}
-  get cellphone () {return this.credentials.get('cellphone');}
-
   ngOnInit() {
     this.perfilservice.getAllUsuarios().then( res => {
       this.credentials = res;

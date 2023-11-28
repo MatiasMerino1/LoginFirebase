@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
+  <ion-toolbar color="warning">
+    <ion-title >
       Home
     </ion-title>
   </ion-toolbar>
@@ -8,27 +8,25 @@
 
 <ion-content [fullscreen]="true">
 
-      <ion-button (click)='goUsuario()' id="botonUsuario">
-        <ion-icon name="person"></ion-icon>Perfil
-      </ion-button>
+<ion-button color="warning" (click)='goUsuario()' id="botonUsuario">
+  <ion-icon name="person"></ion-icon>Perfil
+</ion-button>
+
 <br>
 <br>
-  <ion-card>
-    <ion-card-content id="content-agregar-item">
-    <ion-card-title>
-      Quieres agregar un item?
-    </ion-card-title>
 
-      <ion-button (click)="goToAgregarItem();">Formulario para crear Items</ion-button>
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
+<ion-card>
+  <ion-card-title>
+    Bienvenido al menu principal de nuestra aplicación BodegEeps
+  </ion-card-title>
+  <ion-card-content>
+    Acá podrás ver la lista de items creados, crear un item, borrar un item y actualizar la información de el item que selecciones!
+  </ion-card-content>
+  <div>
     <ion-card-content>
-    <ion-card-title>Quieres iniciar sesión con otra cuenta? Clickea aquí!!!</ion-card-title>
-    <ion-button type="button" (click)="logout();">logout</ion-button>
+      Tambien puedes filtar los objetos con la barra de busqueda situada en la parte superior de la pagina de los Items!
     </ion-card-content>
-  </ion-card>
-
-  <ion-button type="button" (click)="goItems();">Ir a la lista de Items</ion-button>
+  </div>
+</ion-card>
+  <ion-button color="warning" type="button" (click)="goItems();">Ir a la lista de Items</ion-button>
 </ion-content>

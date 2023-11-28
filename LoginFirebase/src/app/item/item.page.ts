@@ -10,27 +10,37 @@ import { ItemService } from './item.service';
 })
 export class ItemPage implements OnInit {
 
-  items!: any;
+  items!: any[];
+  filteredItems!: any[];
+  searchTerm: string = '';
 
-  constructor(private ItemService:ItemService, private router:Router) { }
-
-  get nombre () {return this.items.get('name');}
-  get descripcion () {return this.items.get('description');}
-  get precio () {return this.items.get('description');}
-
+  constructor(private ItemService: ItemService, private router: Router) { }
 
   ngOnInit() {
-    this.ItemService.getAllItems().then( res => {
+    this.ItemService.getAllItems().then(res => {
       this.items = res;
-      console.log(this.items);
+      this.filteredItems = this.items;
     });
   }
 
-  goTo (path:string){
-    this.router.navigateByUrl('item/detail/'+path);
+  filterItems(event: any) {
+    this.searchTerm = event.target.value.toLowerCase();
+    this.filteredItems = this.items.filter(item => {
+      return item.nombre.toLowerCase().includes(this.searchTerm) ||
+        item.descripcion.toLowerCase().includes(this.searchTerm);
+    });
+  }
+
+  goTo(path: string) {
+    this.router.navigateByUrl('item/detail/' + path);
   }
 
   goHome() {
-    this.router.navigateByUrl('home')
+    this.router.navigateByUrl('home');
   }
+
+  goToAgregarItem() {
+    this.router.navigateByUrl('item/agregar-item');
+    console.log("funciono")
+   }
 }

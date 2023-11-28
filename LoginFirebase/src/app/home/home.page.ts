@@ -14,10 +14,7 @@ export class HomePage {
     private authservice: AuthService
   ) {}
 
-  goToAgregarItem() {
-   this.router.navigateByUrl('item/agregar-item');
-   console.log("funciono")
-  }
+
 
   logout () {
     this.authservice.logout();
